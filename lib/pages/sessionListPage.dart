@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mod/data/centers.dart';
 
-class SessionListPage extends StatefulWidget {
+class SessionListPage extends StatelessWidget {
   const SessionListPage({Key key, this.vaccineCenter}) : super(key: key);
   final VaccineCenter vaccineCenter;
 
   @override
-  _SessionListPageState createState() => _SessionListPageState();
-}
-
-class _SessionListPageState extends State<SessionListPage> {
-  @override
   Widget build(BuildContext context) {
-    final vaccineCenter = widget.vaccineCenter;
     return Scaffold(
       appBar: AppBar(
         title: Text("Center"),
@@ -95,7 +89,7 @@ class _SessionListPageState extends State<SessionListPage> {
   }
 
   Widget _sessionListBuilder(BuildContext ctx, int index) {
-    final session = widget.vaccineCenter.sessions[index];
+    final session = vaccineCenter.sessions[index];
     List<Widget> slots = session.slots
         .map((slot) =>
             ListTile(title: Text(slot, style: TextStyle(fontSize: 18))))

@@ -3,31 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:mod/data/centers.dart';
 import 'package:mod/pages/sessionListPage.dart';
 
-class VaccineCentersPage extends StatefulWidget {
+class VaccineCentersPage extends StatelessWidget {
   const VaccineCentersPage({Key key, this.vaccineCenters}) : super(key: key);
   final List<VaccineCenter> vaccineCenters;
 
-  @override
-  _VaccineCentersPageState createState() => _VaccineCentersPageState();
-}
-
-class _VaccineCentersPageState extends State<VaccineCentersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Centers List")),
       body: ListView.builder(
-          itemCount: widget.vaccineCenters.length,
-          itemBuilder: _centerItemBuilder),
+          itemCount: vaccineCenters.length, itemBuilder: _centerItemBuilder),
     );
   }
 
   Widget _centerItemBuilder(BuildContext ctx, int index) {
-    return _centerTile(ctx, index);
-  }
-
-  Widget _centerTile(BuildContext ctx, int index) {
-    VaccineCenter vaccineCenter = widget.vaccineCenters[index];
+    VaccineCenter vaccineCenter = vaccineCenters[index];
     print(vaccineCenter.feeType);
     return InkWell(
       onTap: () {
